@@ -17,10 +17,10 @@ ALLOWED_USERS = set(map(int, os.getenv("ALLOWED_USERS", "").split(",")))
 # Загружаем промт из внешнего файла
 def load_prompt() -> str:
     try:
-        with open("prompt.txt", "r", encoding="utf-8") as f:
+        with open("/etc/secrets/prompt.txt", "r", encoding="utf-8") as f:
             return f.read()
     except FileNotFoundError:
-        return "⚠️ Файл prompt.txt не найден. Пожалуйста, создайте его в корне проекта."
+        return "⚠️ Файл prompt.txt не найден. Пожалуйста, создайте его."
 
 # Мини-сервер Flask для поддержки онлайн-состояния
 app_web = Flask(__name__)
